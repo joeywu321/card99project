@@ -179,6 +179,7 @@ app.get('/', function (req, res) {
     console.log('Error connecting to Mongo. Message:\n'+err);
   });
   
+  var ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
   app.listen(port, ip);
   console.log('Server running on http://%s:%s', ip, port);
   
