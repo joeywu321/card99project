@@ -73,10 +73,12 @@ wss.on('connection', function(ws) {
     });
 });
 
-/*
+
 var MongoClient = require('mongodb').MongoClient;
  
 var findDocuments = function(db, callback) {
+
+    /*
     var collection = db.collection('login');
 
     collection.find({firstName:"Bill"}).toArray(function(err,docs){
@@ -88,7 +90,7 @@ var findDocuments = function(db, callback) {
     collection.insert({  firstName: 'Steve', lastName: 'Jobs' });
     collection.insert({  firstName: 'Bill', lastName: 'Gates' });
     collection.insert({  firstName: 'James', lastName: 'Bond' });
-    
+    */
     
 
 }
@@ -98,11 +100,12 @@ MongoClient.connect("mongodb://localhost:27017/", function (err, client) {
   if(err) throw err;
   console.log('mongodb is running!');  
   
-  findDocuments(client.db('local'), function(){
+  findDocuments(client.db('sampledb'), function(){
+        console.log('mongodb is OK!');  
         db.close();
     });
 });
-*/
+
 
 console.log('Listening at IP ' + ipaddr +' on port '+port);
 server.listen(port,ipaddr);
