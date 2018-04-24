@@ -15,7 +15,7 @@ var http = require('http');
 //var port      = process.env.OPENSHIFT_NODEJS_PORT || 3000
 //var ipaddr = "127.0.0.1";
 var ipaddr = "0.0.0.0";
-var port = 3000;
+var port = 8080;
 
 CLIENTS = {};
 CLIENTS_STATE = {};
@@ -183,7 +183,7 @@ app.get('/', function (req, res) {
   
   var appIp   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
   var appPort = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080;
-  app.listen(appPort, appIp);
+  //app.listen(appPort, appIp);
   console.log('Server running on http://%s:%s', appIp, appPort);
   
-  module.exports = app ;
+  //module.exports = app ;
