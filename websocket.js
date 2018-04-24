@@ -93,39 +93,30 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
         mongoURL += mongoHost + ':' +  mongoPort + '/' + mongoDatabase;
     }
 }
-var MongoClient = require('mongodb').MongoClient;
- 
-var findDocuments = function(db, callback) {
+var db = null,
+    dbDetails = new Object();
 
-    /*
-    var collection = db.collection('login');
+var initDb = function(callback) {
+  if (mongoURL == null) return;
 
-    collection.find({firstName:"Bill"}).toArray(function(err,docs){
-        if (err) throw err;
-        console.log(docs);
-        callback;
-    })
+  var mongodb = require('mongodb');
+  if (mongodb == null) return;
 
-    collection.insert({  firstName: 'Steve', lastName: 'Jobs' });
-    collection.insert({  firstName: 'Bill', lastName: 'Gates' });
-    collection.insert({  firstName: 'James', lastName: 'Bond' });
-    */
-    
+  mongodb.connect(mongoURL, function(err, conn) {
+    if (err) {
+      callback(err);
+      return;
+    }
 
-}
+    db = conn;
+    dbDetails.databaseName = db.databaseName;
+    dbDetails.url = mongoURLLabel;
+    dbDetails.type = 'MongoDB';
 
-console.log('mongoURL: ' + mongoURL);
-
-// Connect to the db
-MongoClient.connect(mongoURL, function (err, client) {
-  if(err) throw err;
-  console.log('mongodb is running!');  
-  
-  findDocuments(client.db('sampledb'), function(){
-        console.log('mongodb is OK!');  
-        db.close();
-    });
-});
+    console.log('Connected to MongoDB at: %s', mongoURL);
+  });
+};
+initDb(function(err){});
 
 
 console.log('Listening at IP ' + ipaddr +' on port '+port);
