@@ -3,7 +3,8 @@ var http = require('http');
 
 //var ipaddr  = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
 //var port      = process.env.OPENSHIFT_NODEJS_PORT || 3000
-var ipaddr = "127.0.0.1";
+//var ipaddr = "127.0.0.1";
+var ipaddr = "0.0.0.0";
 var port = 8080;
 
 CLIENTS = {};
