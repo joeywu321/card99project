@@ -15,7 +15,7 @@ var http = require('http');
 //var port      = process.env.OPENSHIFT_NODEJS_PORT || 3000
 //var ipaddr = "127.0.0.1";
 var ipaddr = "0.0.0.0";
-var port = 8081;
+var port = 8080;
 
 CLIENTS = {};
 CLIENTS_STATE = {};
@@ -181,8 +181,9 @@ app.get('/', function (req, res) {
     console.log('Error connecting to Mongo. Message:\n'+err);
   });
   
-  var ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
-  app.listen(port, ip);
-  console.log('Server running on http://%s:%s', ip, port);
+  var appIp   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
+  var appPort = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
+  app.listen(port, appIp);
+  console.log('Server running on http://%s:%s', appIp, appPort);
   
   module.exports = app ;
