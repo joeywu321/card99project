@@ -114,10 +114,11 @@ var findDocuments = function(db, callback) {
 
 }
 
+console.log('mongoURL: ' + mongoURL);
+
 // Connect to the db
 MongoClient.connect(mongoURL, function (err, client) {
   if(err) throw err;
-  console.log('mongoURL: ' + mongoURL);
   console.log('mongodb is running!');  
   
   findDocuments(client.db('sampledb'), function(){
