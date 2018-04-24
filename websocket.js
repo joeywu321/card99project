@@ -183,7 +183,7 @@ app.get('/', function (req, res) {
   
   var appIp   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
   var appPort = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
-  app.listen(port, appIp);
+  app.listen(appPort, appIp);
   console.log('Server running on http://%s:%s', appIp, appPort);
   
   module.exports = app ;
