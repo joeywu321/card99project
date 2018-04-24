@@ -86,6 +86,7 @@ wss.on('connection', function(ws) {
 
 
 var mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL;
+var mongoURLLabel = "";
 
 if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
     var mongoServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase(),
@@ -96,10 +97,12 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
         mongoUser = process.env[mongoServiceName + '_USER'];
 
     if (mongoHost && mongoPort && mongoDatabase) {
+        mongoURLLabel = mongoURL = 'mongodb://';
         if (mongoUser && mongoPassword) {
             mongoURL += mongoUser + ':' + mongoPassword + '@';
         }
         // Provide UI label that excludes user id and pw
+        mongoURLLabel += mongoHost + ':' + mongoPort + '/' + mongoDatabase;
         mongoURL += mongoHost + ':' +  mongoPort + '/' + mongoDatabase;
     }
 }
@@ -126,7 +129,6 @@ var initDb = function(callback) {
     console.log('Connected to MongoDB at: %s', mongoURL);
   });
 };
-initDb(function(err){});
 
 
 console.log('Listening at IP ' + ipaddr +' on port '+port);
