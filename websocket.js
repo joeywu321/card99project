@@ -74,6 +74,25 @@ wss.on('connection', function(ws) {
 });
 
 
+
+var mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL;
+
+if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
+    var mongoServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase(),
+        mongoHost = process.env[mongoServiceName + '_SERVICE_HOST'],
+        mongoPort = process.env[mongoServiceName + '_SERVICE_PORT'],
+        mongoDatabase = process.env[mongoServiceName + '_DATABASE'],
+        mongoPassword = process.env[mongoServiceName + '_PASSWORD']
+        mongoUser = process.env[mongoServiceName + '_USER'];
+
+    if (mongoHost && mongoPort && mongoDatabase) {
+        if (mongoUser && mongoPassword) {
+            mongoURL += mongoUser + ':' + mongoPassword + '@';
+        }
+        // Provide UI label that excludes user id and pw
+        mongoURL += mongoHost + ':' +  mongoPort + '/' + mongoDatabase;
+    }
+}
 var MongoClient = require('mongodb').MongoClient;
  
 var findDocuments = function(db, callback) {
@@ -96,8 +115,9 @@ var findDocuments = function(db, callback) {
 }
 
 // Connect to the db
-MongoClient.connect("mongodb://localhost:27017/", function (err, client) {
+MongoClient.connect(mongoURL, function (err, client) {
   if(err) throw err;
+  console.log('mongoURL: ' + mongoURL);
   console.log('mongodb is running!');  
   
   findDocuments(client.db('sampledb'), function(){
