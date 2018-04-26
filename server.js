@@ -114,15 +114,18 @@ var db = null,
     dbDetails = new Object();
 
 var initDb = function(callback) {
+console.log('mongoURL == null');
   if (mongoURL == null) return;
 
   var mongodb = require('mongodb');
+console.log('mongodb == null');
   if (mongodb == null) return;
 
   mongodb.connect(mongoURL, function(err, conn) {
     if (err) {
-      callback(err);
-      return;
+        console.log('mongodb err');        
+        callback(err);
+        return;
     }
 
     db = conn;
