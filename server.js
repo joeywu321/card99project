@@ -124,8 +124,9 @@ console.log('mongodb == null');
   if (mongodb == null) return;
 
   mongodb.connect(mongoURL, function(err, conn) {
+    console.log(mongoURL);
     if (err) {
-        console.log('mongodb err');        
+        console.log('mongodb err'+ err);        
         callback(err);
         return;
     }
