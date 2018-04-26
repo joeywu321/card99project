@@ -96,17 +96,11 @@ if (mongoURL == null ) {
         //mongoDatabase = process.env[mongoServiceName + '_DATABASE'],
         //mongoPassword = process.env[mongoServiceName + '_PASSWORD']
         //mongoUser = process.env[mongoServiceName + '_USER'];
-    var mongoHost = "localhost",
+    var mongoHost = "127.0.0.1",
         mongoPort = 27017,
         mongoDatabase = "sampledb",
         mongoPassword = "bdPN8vvFe5HYhLXb",
         mongoUser = "user4KF";
-
-    var connection_string = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
-        process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
-        process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
-        process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
-        process.env.OPENSHIFT_APP_NAME;
 
     if (mongoHost && mongoPort && mongoDatabase) {
         mongoURLLabel = mongoURL = 'mongodb://';
@@ -129,8 +123,8 @@ console.log('mongoURL == null');
 console.log('mongodb == null');
   if (mongodb == null) return;
 
-  mongodb.connect(connection_string, function(err, conn) {
-    console.log(connection_string);
+  mongodb.connect(mongoURL, function(err, conn) {
+    console.log(mongoURL);
     if (err) {
         console.log('mongodb err'+ err);        
         callback(err);
@@ -142,7 +136,7 @@ console.log('mongodb == null');
     dbDetails.url = mongoURLLabel;
     dbDetails.type = 'MongoDB';
 
-    console.log('Connected to MongoDB at: %s', connection_string);
+    console.log('Connected to MongoDB at: %s', mongoURL);
   });
 };
 initDb(function(err){});
