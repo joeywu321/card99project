@@ -1,3 +1,4 @@
+/*
 var express = require('express'),
     app     = express(),
     morgan  = require('morgan');
@@ -6,7 +7,7 @@ Object.assign=require('object-assign')
 
 app.engine('html', require('ejs').renderFile);
 app.use(morgan('combined'))
-
+*/
 
 var WebSocketServer = require('ws').Server;
 var http = require('http');
@@ -129,12 +130,12 @@ var initDb = function(callback) {
     console.log('Connected to MongoDB at: %s', mongoURL);
   });
 };
-
+initDb(function(err){});
 
 console.log('Listening at IP ' + ipaddr +' on port '+port);
 server.listen(port,ipaddr);
 
-
+/*
 app.get('/', function (req, res) {
     // try to initialize the db on every request if it's not already
     // initialized.
@@ -186,4 +187,5 @@ app.get('/', function (req, res) {
   //app.listen(appPort, appIp);
   console.log('Server running on http://%s:%s', appIp, appPort);
   
-  //module.exports = app ;
+  module.exports = app ;
+  */
