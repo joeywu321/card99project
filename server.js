@@ -90,14 +90,16 @@ var mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL;
 var mongoURLLabel = "";
 
 if (mongoURL == null ) {
-    var mongoServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase(),
-        mongoHost = process.env[mongoServiceName + '_SERVICE_HOST'],
-        mongoPort = process.env[mongoServiceName + '_SERVICE_PORT'],
+    //var mongoServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase(),
+        //mongoHost = process.env[mongoServiceName + '_SERVICE_HOST'],
+        //mongoPort = process.env[mongoServiceName + '_SERVICE_PORT'],
         //mongoDatabase = process.env[mongoServiceName + '_DATABASE'],
         //mongoPassword = process.env[mongoServiceName + '_PASSWORD']
         //mongoUser = process.env[mongoServiceName + '_USER'];
-        mongoDatabase = "sampledb";
-        mongoPassword = "bdPN8vvFe5HYhLXb";
+    var mongoHost = process.env[mongoServiceName + '_SERVICE_HOST'],
+        mongoPort = process.env[mongoServiceName + '_SERVICE_PORT'],
+        mongoDatabase = "sampledb",
+        mongoPassword = "bdPN8vvFe5HYhLXb",
         mongoUser = "user4KF";
 
     if (mongoHost && mongoPort && mongoDatabase) {
