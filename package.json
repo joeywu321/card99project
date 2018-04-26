@@ -11,16 +11,13 @@
     "mocha": "^2.4.5",
     "mongodb": "^2.1.16",
     "morgan": "^1.7.0",
-    "object-assign":"4.1.0"
+    "object-assign":"4.1.0",
+    "ws": "~0.4.31"
   },
   "engine": {
     "node": "*",
     "npm": "*"
-  },
-  "scripts": {
-    "start": "node websocket.js",
-    "test": "IP=0.0.0.0 PORT=3030 mocha --timeout 5000 tests/*_test.js"
-  },
+  },=
   "repository": {
     "type": "git",
     "url": "https://github.com/joeywu321/card99project.git"
