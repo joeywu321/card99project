@@ -17,7 +17,7 @@
   "engine": {
     "node": "*",
     "npm": "*"
-  },=
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/joeywu321/card99project.git"
