@@ -96,7 +96,7 @@ if (mongoURL == null ) {
         //mongoDatabase = process.env[mongoServiceName + '_DATABASE'],
         //mongoPassword = process.env[mongoServiceName + '_PASSWORD']
         //mongoUser = process.env[mongoServiceName + '_USER'];
-    var mongoHost = "127.0.0.1",
+    var mongoHost = "0.0.0.0",
         mongoPort = 27017,
         mongoDatabase = "sampledb",
         mongoPassword = "bdPN8vvFe5HYhLXb",
