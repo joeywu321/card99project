@@ -102,6 +102,12 @@ if (mongoURL == null ) {
         mongoPassword = "bdPN8vvFe5HYhLXb",
         mongoUser = "user4KF";
 
+    var connection_string = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
+        process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
+        process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
+        process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
+        process.env.OPENSHIFT_APP_NAME;
+
     if (mongoHost && mongoPort && mongoDatabase) {
         mongoURLLabel = mongoURL = 'mongodb://';
         if (mongoUser && mongoPassword) {
@@ -123,8 +129,8 @@ console.log('mongoURL == null');
 console.log('mongodb == null');
   if (mongodb == null) return;
 
-  mongodb.connect(mongoURL, function(err, conn) {
-    console.log(mongoURL);
+  mongodb.connect(connection_string, function(err, conn) {
+    console.log(connection_string);
     if (err) {
         console.log('mongodb err'+ err);        
         callback(err);
@@ -136,7 +142,7 @@ console.log('mongodb == null');
     dbDetails.url = mongoURLLabel;
     dbDetails.type = 'MongoDB';
 
-    console.log('Connected to MongoDB at: %s', mongoURL);
+    console.log('Connected to MongoDB at: %s', connection_string);
   });
 };
 initDb(function(err){});
