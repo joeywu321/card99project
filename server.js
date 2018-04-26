@@ -85,7 +85,7 @@ wss.on('connection', function(ws) {
 });
 
 
-
+/*
 var mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL;
 var mongoURLLabel = "";
 
@@ -131,7 +131,7 @@ var initDb = function(callback) {
   });
 };
 initDb(function(err){});
-
+*/
 console.log('Listening at IP ' + ipaddr +' on port '+port);
 server.listen(port,ipaddr);
 
