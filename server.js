@@ -100,7 +100,7 @@ if (mongoURL == null ) {
         mongoPort = 27017,
         mongoDatabase = "sampledb",
         mongoPassword = "bdPN8vvFe5HYhLXb",
-        mongoUser = "admin";	//"user4KF";
+        mongoUser = "user4KF";
 
     if (mongoHost && mongoPort && mongoDatabase) {
         mongoURLLabel = mongoURL = 'mongodb://';
@@ -109,7 +109,7 @@ if (mongoURL == null ) {
         }
         // Provide UI label that excludes user id and pw
         mongoURLLabel += mongoHost + ':' + mongoPort + '/' + mongoDatabase;
-        mongoURL += mongoHost + ':' +  mongoPort + '/' + mongoDatabase;
+        mongoURL += mongoHost + ':' +  mongoPort + '/' + "mongodb-persistent";// mongoDatabase;
     }
 }
 var db = null,
