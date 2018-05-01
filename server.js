@@ -109,7 +109,7 @@ if (mongoURL == null ) {
         }
         // Provide UI label that excludes user id and pw
         mongoURLLabel += mongoHost + ':' + mongoPort + '/' + mongoDatabase;
-        mongoURL += mongoHost + ':' +  mongoPort + '/' + "mongodb-persistent";// mongoDatabase;
+        mongoURL += mongoHost + ':' +  mongoPort + '/' + "admin"; //"mongodb-persistent";// mongoDatabase;
     }
 }
 var db = null,
