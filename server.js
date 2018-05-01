@@ -96,7 +96,7 @@ if (mongoURL == null ) {
         //mongoDatabase = process.env[mongoServiceName + '_DATABASE'],
         //mongoPassword = process.env[mongoServiceName + '_PASSWORD']
         //mongoUser = process.env[mongoServiceName + '_USER'];
-    var mongoHost = "mongodb-card99project.7e14.starter-us-west-2.openshiftapps.com";	//"127.0.0.1",
+    var mongoHost = "172.30.207.202";	//"127.0.0.1",
         mongoPort = 27017,
         mongoDatabase = "sampledb",
         mongoPassword = "bdPN8vvFe5HYhLXb",
@@ -109,7 +109,7 @@ if (mongoURL == null ) {
         }
         // Provide UI label that excludes user id and pw
         mongoURLLabel += mongoHost + ':' + mongoPort + '/' + mongoDatabase;
-        mongoURL += mongoHost + ':' +  mongoPort + '/' + "mongodb-persistent";// mongoDatabase;
+        mongoURL += mongoHost + ':' +  mongoPort ;// mongoDatabase;
     }
 }
 var db = null,
