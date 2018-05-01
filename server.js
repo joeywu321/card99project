@@ -100,7 +100,7 @@ if (mongoURL == null ) {
         mongoPort = 27017,
         mongoDatabase = "sampledb",
         mongoPassword = "bdPN8vvFe5HYhLXb",
-        mongoUser = "user4KF";
+        mongoUser = "admin";	//"user4KF";
 
     if (mongoHost && mongoPort && mongoDatabase) {
         mongoURLLabel = mongoURL = 'mongodb://';
